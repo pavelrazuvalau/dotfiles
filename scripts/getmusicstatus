@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# Prints out the artist and song that is playing in Cmus using the cmus-remote
+# program. 
+#
+# Used with yabar.
+#
+# Author: clyde80
+# Updated on: December 22, 2016
+# Website: https://github.com/clyde80
+#
+output=$(cmus-remote -Q)
+if [ -z "$output" ]; then
+    echo ""
+else
+	artist=$(cmus-remote -Q | grep "tag artist")
+    title=$(cmus-remote -Q | grep "tag title")
+    if [ -z "$title" ]; then
+	    echo ""
+    else
+    title=${title//"tag title "/""}
+    artist=${artist//"tag artist "/""}
+    echo "    $artist - $title"
+    fi
+fi

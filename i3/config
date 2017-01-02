@@ -165,6 +165,7 @@ focus_follows_mouse no
 
 # i3-gaps
 gaps inner 15
+smart_gaps on
 
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ unmute

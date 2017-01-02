@@ -20,6 +20,6 @@ else
     else
     title=${title//"tag title "/""}
     artist=${artist//"tag artist "/""}
-    echo "    $artist - $title"
+    echo "   $artist - $title"
     fi
 fi

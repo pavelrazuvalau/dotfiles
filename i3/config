@@ -194,6 +194,7 @@ for_window [class="Vlc"] floating enable
 for_window [class="Gpicview"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Skype"] floating enable
+for_window [class="XTerm"] floating enable
 
 # Start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun -lines 4 -eh 3 -width 100 -padding 325 -opacity "85" -bw 0 -bc $bg-color -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"

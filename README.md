@@ -1,2 +1,2 @@
 # i3-config
-Configuration files for i3wm
+Dotfiles for i3wm

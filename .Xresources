@@ -10,9 +10,13 @@ URxvt.termName: rxvt-unicode-256color
 URxvt.urgentOnBell: True
 URxvt.cursorBlink: False
 
-! Transparency
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
+! Real transparency
+!urxvt*depth: 32
+!urxvt*background: rgba:0000/0000/0200/c800
+
+! Fake transparency
+URxvt.transparent: true
+URxvt.shading: 25
 
 ! Needs to be disabled for C-S keybindings to work
 URxvt.iso14755: false

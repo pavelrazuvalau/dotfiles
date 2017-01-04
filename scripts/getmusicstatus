@@ -10,12 +10,13 @@
 # Website: https://github.com/clyde80
 #
 output=$(cmus-remote -Q)
+status=$(cmus-remote -Q)
 if [ -z "$output" ]; then
     echo ""
 else
 	artist=$(cmus-remote -Q | grep "tag artist")
     title=$(cmus-remote -Q | grep "tag title")
-    if [ -z "$title" ]; then
+    if [ -z "$title"  ]; then
 	    echo ""
     else
     title=${title//"tag title "/""}

@@ -6,8 +6,9 @@
 # Used with yabar.
 #
 # Author: clyde80
-# Updated on: December 22, 2016
 # Website: https://github.com/clyde80
+# Fork: prazuvalov
+# Website: https://github.com/prazuvalov
 #
 output=$(cmus-remote -Q)
 status=$(cmus-remote -Q)

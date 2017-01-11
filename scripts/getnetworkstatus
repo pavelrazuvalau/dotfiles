@@ -7,6 +7,8 @@
 # Fork: prazuvalov
 # Website: https://github.com/prazuvalov
 #
+# Replace enp3s0 with your own lan profile
+#
 lan=$(nmcli dev show enp3s0 | grep connected)
 output=$(nmcli -t -f active,ssid dev wifi | grep "yes")
 if [ ! -z "$output" ] && [ -z "$lan" ]; then

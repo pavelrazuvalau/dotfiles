@@ -43,8 +43,8 @@ URxvt.keysym.C-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-u: perl:url-select:select_next
 
 ! Font
-!Terminus
-URxvt.font: xft:Terminus-10
+!Terminus (powerline)
+URxvt.font: xft:Terminess Powerline-10
 
 ! Tango theme
 URxvt.background: #1C1C1C

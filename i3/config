@@ -9,9 +9,11 @@ floating_modifier $mod
 
 # Start a terminal
 bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+bindsym Shift+$mod+Return exec --no-startup-id xterm
 
 # Start windows without title
 for_window [class="^.*"] border pixel 3px
+smart_borders on
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -46,8 +48,8 @@ bindsym $mod+h split h
 # Split in vertical orientation
 bindsym $mod+v split v
 
-# Enter fullscreen mode for the focused container (yabar issue)
-bindsym $mod+f exec --no-startup-id "i3-msg fullscreen toggle; killall yabar; yabar"
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
 
 # Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -66,27 +68,46 @@ bindsym $mod+a focus parent
 # Focus the child container
 #bindsym $mod+d focus child
 
+set $wrkspc1 "1 "
+set $wrkspc2 "2 "
+set $wrkspc3 "3 "
+set $wrkspc4 "4 "
+set $wrkspc5 "5 "
+set $wrkspc6 "6 "
+set $wrkspc7 "7 "
+set $wrkspc8 "8 "
+set $wrkspc9 " VGA"
+set $wrkspc10 " HDMI"
+
 # Switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
+bindsym $mod+1 workspace $wrkspc1
+bindsym $mod+2 workspace $wrkspc2
+bindsym $mod+3 workspace $wrkspc3
+bindsym $mod+4 workspace $wrkspc4
+bindsym $mod+5 workspace $wrkspc5
+bindsym $mod+6 workspace $wrkspc6
+bindsym $mod+7 workspace $wrkspc7
+bindsym $mod+8 workspace $wrkspc8
+bindsym $mod+9 workspace $wrkspc9
+bindsym $mod+0 workspace $wrkspc10
 
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+1 move container to workspace $wrkspc1
+bindsym $mod+Shift+2 move container to workspace $wrkspc2
+bindsym $mod+Shift+3 move container to workspace $wrkspc3
+bindsym $mod+Shift+4 move container to workspace $wrkspc4
+bindsym $mod+Shift+5 move container to workspace $wrkspc5
+bindsym $mod+Shift+6 move container to workspace $wrkspc6
+bindsym $mod+Shift+7 move container to workspace $wrkspc7
+bindsym $mod+Shift+8 move container to workspace $wrkspc8
+bindsym $mod+Shift+9 move container to workspace $wrkspc9
+bindsym $mod+Shift+0 move container to workspace $wrkspc10
+
+for_window [class="^.*"] focus
 
 # The last two workspaces are for extermal monitor
-workspace 6 output VGA1
-workspace 7 output HDMI1
+workspace $wrkspc7 output VGA1
+workspace $wrkspc8 output HDMI1
 
 # Switch to next / previous workspace
 bindsym Ctrl+$mod+j workspace prev
@@ -150,15 +171,15 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 #	colors {
 #		background $bg-color
 #		separator #757575
-		#                  border             background         text
+#		#                  border             background         text
 #		focused_workspace  $bg-color          $bg-color          $text-color
 #		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
 #		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 #	}
 #}
 
-# Start yabar
-exec_always --no-startup-id killall yabar; yabar
+# Start bar 
+exec_always --no-startup-id killall polybar; polybar default
 
 # Disable focusing windows with mouse
 focus_follows_mouse no
@@ -170,11 +191,11 @@ smart_gaps on
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%- unmute
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 bindsym XF86ScreenSaver exec --no-startup-id ~/i3-config/scripts/lock
-bindsym XF86Display exec --no-startup-id "arandr"
+bindsym XF86Display exec --no-startup-id arandr
 
 # Screenshot
 bindsym Print exec --no-startup-id gnome-screenshot
@@ -193,10 +214,20 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Vlc"] floating enable
 for_window [class="Gpicview"] floating enable
 for_window [class="Arandr"] floating enable
-for_window [class="Skype"] floating enable
 for_window [class="XTerm"] floating enable
+
+# Assigned windows
+assign [class="URxvt"] $wrkspc1
+assign [class="Subl3"] $wrkspc2
+assign [class="Atom"] $wrkspc2
+assign [class="Thunar"] $wrkspc3
+assign [class="Google-chrome"] $wrkspc4
+assign [class="TelegramDesktop"] $wrkspc5
+assign [class="Skype"] $wrkspc6
+assign [class="Viber"] $wrkspc7
+assign [class="Spectrumyzer.py"] $wrkspc8
 
 for_window [class="Spectrumyzer.py"] border pixel 0px
 
 # Start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun -lines 4 -eh 3 -width 100 -padding 325 -opacity "85" -bw 0 -bc $bg-color -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd"
+bindsym $mod+d exec --no-startup-id rofi -show drun -lines 4 -eh 3 -width 100 -padding 325 -opacity "85" -bw 0

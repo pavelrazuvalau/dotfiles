@@ -10,18 +10,17 @@
 # Fork: prazuvalov
 # Website: https://github.com/prazuvalov
 #
-output=$(cmus-remote -Q)
-status=$(cmus-remote -Q)
-if [ -z "$output" ]; then
+status=$(ps cax | grep cmus)
+if [ -z "$status" ]; then
     echo ""
 else
 	artist=$(cmus-remote -Q | grep "tag artist")
     title=$(cmus-remote -Q | grep "tag title")
     if [ -z "$title"  ]; then
-	    echo ""
+	    echo "  Unknown"
     else
     title=${title//"tag title "/""}
     artist=${artist//"tag artist "/""}
-    echo "   $artist - $title"
+    echo "  $artist - $title"
     fi
 fi

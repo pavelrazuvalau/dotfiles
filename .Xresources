@@ -113,7 +113,7 @@ XTerm*charClass:
 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
 
 ! Tango Theme
-XTerm*background: #1C1C1C
+XTerm*background: #293986
 XTerm*foreground: #DEDEDE
 
 ! black
@@ -146,8 +146,8 @@ XTerm*color15 : #EEEEEC
 ! ------------------------------------------------------------------------------
 
 rofi.color-enabled:                  true
-rofi.color-normal:                   argb:00000000, #c1c1c1, argb:11FFFFFF, #394249, #ffffff
+rofi.color-normal:                   argb:00000000, #54c7e5, argb:B3051737, #54c7e5, #051737
 rofi.color-urgent:                   argb:00000000, #ff1844, argb:11FFFFFF, #394249, #ff1844
 rofi.color-active:                   argb:00000000, #80cbc4, argb:11FFFFFF, #394249, #80cbc4
-rofi.color-window:                   argb:ee333333, #273238, #c1c1c1
+rofi.color-window:                   argb:D9000000, #54c7e5, #54c7e5
 rofi.separator-style:                solid

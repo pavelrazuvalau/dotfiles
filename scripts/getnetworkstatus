@@ -10,15 +10,22 @@
 # Replace enp3s0 with your own lan profile
 #
 lan=$(nmcli dev show enp3s0 | grep connected)
-output=$(nmcli -t -f active,ssid dev wifi | grep "yes")
-if [ ! -z "$output" ] && [ -z "$lan" ]; then
+output=$(nmcli -t -f active,ssid dev wifi | grep yes)
+tethering=$(nmcli device | grep enp0s26u1u6)
+
+if [ ! -z "$output" ] && [ -z "$lan" ] && [ -z "$tethering" ]; then
     output=${output//"yes:"/""}
     echo " $output"
 else
 	if [ ! -z "$lan" ]; then
 		ip=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | head -1)
 		echo " $ip"
-    else 
-    	echo "Not Connected"
+    else
+    	if [ ! -z "$tethering" ]; then
+    		ip=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | head -1)
+			echo " $ip"
+		else
+    		echo "Not Connected"
+    	fi
 	fi
 fi
